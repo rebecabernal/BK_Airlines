@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Flights extends Model
+class Flight extends Model
 {
     protected $fillable = [
         "date",
@@ -20,7 +20,7 @@ class Flights extends Model
 
     public function planes(): BelongsTo
     {
-        return $this->belongsTo(Planes::class);
+        return $this->belongsTo(Plane::class);
     }
 
     public function users(): BelongsToMany
