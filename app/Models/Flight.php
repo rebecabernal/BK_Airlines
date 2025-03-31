@@ -14,6 +14,7 @@ class Flight extends Model
         "arrival",
         "image",
         "status",
+        "reserved",
         "plane_id"
     ];
 
