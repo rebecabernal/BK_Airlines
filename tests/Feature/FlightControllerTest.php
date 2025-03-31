@@ -287,7 +287,7 @@ class FlightControllerTest extends TestCase
         $plane = Plane::factory()->create(['seats' => 2]);
         $flight = Flight::factory()->create([
             'plane_id' => $plane->id,
-            'reserved' => 1,
+            'reserved' => 15,
             'status' => 0
         ]);
 
