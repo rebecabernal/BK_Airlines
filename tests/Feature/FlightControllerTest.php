@@ -46,7 +46,7 @@ class FlightControllerTest extends TestCase
 
         $data = [
             'date' => now()->addDays(10),
-            'departure' => 'Madrid',
+            'origin' => 'Madrid',
             'arrival' => 'Barcelona',
             'plane_id' => $plane->id,
             'reserved' => 0,
@@ -57,7 +57,7 @@ class FlightControllerTest extends TestCase
             ->assertRedirect(route('flights'));
 
         $this->assertDatabaseHas('flights', [
-            'departure' => 'Madrid',
+            'origin' => 'Madrid',
             'arrival' => 'Barcelona',
             'plane_id' => $plane->id
         ]);
@@ -96,8 +96,8 @@ class FlightControllerTest extends TestCase
 
         $data = [
             'date' => now()->addDays(5),
-            'departure' => 'Valencia',
-            'arrival' => 'Lisbon',
+            'origin' => 'Valencia',
+            'arrival' => 'Lisboa',
             'plane_id' => $plane->id,
             'reserved' => 10
         ];
@@ -107,8 +107,8 @@ class FlightControllerTest extends TestCase
             ->assertRedirect(route('flights'));
 
         $this->assertDatabaseHas('flights', [
-            'departure' => 'Valencia',
-            'arrival' => 'Lisbon',
+            'origin' => 'Valencia',
+            'arrival' => 'Lisboa',
         ]);
     }
 
@@ -128,7 +128,7 @@ class FlightControllerTest extends TestCase
     public function test_if_past_flights_updates_reserved_and_returns_view()
     {
         $admin = User::factory()->create(['isAdmin' => true]);
-        $plane = Plane::factory()->create(['max_capacity' => 200]);
+        $plane = Plane::factory()->create(['seats' => 200]);
         $flight = Flight::factory()->create([
             'date' => now()->subDays(3),
             'reserved' => 0,
@@ -147,7 +147,7 @@ class FlightControllerTest extends TestCase
     public function test_if_flight_can_be_booked_and_unbooked()
     {
         $user = User::factory()->create();
-        $plane = Plane::factory()->create(['max_capacity' => 2]);
+        $plane = Plane::factory()->create(['seats' => 2]);
         $flight = Flight::factory()->create([
             'plane_id' => $plane->id,
             'reserved' => 0
@@ -206,7 +206,7 @@ class FlightControllerTest extends TestCase
     public function test_if_booking_fails_when_flight_is_full()
     {
         $user = User::factory()->create();
-        $plane = Plane::factory()->create(['max_capacity' => 1]);
+        $plane = Plane::factory()->create(['seats' => 1]);
         $flight = Flight::factory()->create([
             'plane_id' => $plane->id,
             'reserved' => 1
@@ -284,11 +284,11 @@ class FlightControllerTest extends TestCase
     public function test_if_user_can_book_flight_with_available_capacity()
     {
         $user = User::factory()->create();
-        $plane = Plane::factory()->create(['max_capacity' => 2]);
+        $plane = Plane::factory()->create(['seats' => 2]);
         $flight = Flight::factory()->create([
             'plane_id' => $plane->id,
             'reserved' => 1,
-            'aviable' => 0
+            'status' => 0
         ]);
 
         $this->actingAs($user)
@@ -338,7 +338,7 @@ class FlightControllerTest extends TestCase
         $this->actingAs($user)
             ->get(route('flightReservations', $flight->id))
             ->assertRedirect('/')
-            ->assertSessionHas('error', 'No tienes permiso para acceder a esta página.');
+            ->assertSessionHas('error', 'Access denied, you are not authorised');
     }
 
     public function test_if_admin_get_reservations_returns_json_correctly()

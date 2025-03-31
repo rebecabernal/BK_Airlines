@@ -38,8 +38,8 @@ class PlaneControllerTest extends TestCase
         $admin = User::factory()->create(['isAdmin' => true]);
 
         $data = [
-            'name' => 'Test Plane',
-            'max_capacity' => 180,
+            'name' => 'Plane',
+            'seats' => 80,
         ];
 
         $this->actingAs($admin)
@@ -82,7 +82,7 @@ class PlaneControllerTest extends TestCase
 
         $data = [
             'name' => 'Updated Plane',
-            'max_capacity' => 250,
+            'seats' => 50,
         ];
 
         $this->actingAs($admin)

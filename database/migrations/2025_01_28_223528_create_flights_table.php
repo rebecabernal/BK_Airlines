@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('origin');
             $table->string('arrival');
             $table->boolean('status');
-            $table->boolean('reserved');
+            $table->integer('reserved');
             $table->foreignId('plane_id')->constrained("planes");
             $table->timestamps();
         });

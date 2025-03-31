@@ -8,7 +8,7 @@ use App\Models\Plane;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ApiPlaneControllerTest extends TestCase
+class PlaneControllerTest extends TestCase
 {
     use RefreshDatabase;
 

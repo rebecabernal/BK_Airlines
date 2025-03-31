@@ -9,7 +9,7 @@ use App\Models\Flight;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ApiFlightControllerTest extends TestCase
+class FlightControllerTest extends TestCase
 {
     use RefreshDatabase;
 
