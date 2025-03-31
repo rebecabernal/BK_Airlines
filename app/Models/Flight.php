@@ -12,7 +12,6 @@ class Flight extends Model
         "date",
         "origin",
         "arrival",
-        "image",
         "status",
         "reserved",
         "plane_id"

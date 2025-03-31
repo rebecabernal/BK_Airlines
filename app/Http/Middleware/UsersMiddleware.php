@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class UsersMiddleware
+class RoleMiddleware
 {
     /**
      * Handle an incoming request.
@@ -22,7 +22,7 @@ class UsersMiddleware
             return redirect('/')->with('error', 'No tienes permiso para acceder a esta página.');
         }
 
-        if ($role === 'user' && !$user) {
+        if ($role === 'user' && (!$user || $user->isAdmin)) {
             return redirect('/login')->with('error', 'Debes iniciar sesión.');
         }
 

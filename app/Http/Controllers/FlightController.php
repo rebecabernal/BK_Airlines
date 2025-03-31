@@ -36,7 +36,7 @@ class FlightController extends Controller
         foreach($pastFlights as $flight){
             $flight->update(
                 [
-                    "reserved" => $flight->plane->max_capacity 
+                    "reserved" => $flight->plane->seats 
                 ]
             );
         }
@@ -63,11 +63,11 @@ class FlightController extends Controller
     {
         $flights = Flight::create([
             'date' => $request->date,
-            'departure' => $request->departure,
+            'origin' => $request->origin,
             'arrival' => $request->arrival,
-            'plane_id' => $request->plane_id,
+            'status' => $request->status,        
             'reserved' => $request->reserved,
-            'aviable' => 1
+            'plane_id' => $request->plane_id
         ]);
         $flights->save();
 
@@ -119,11 +119,11 @@ class FlightController extends Controller
 
         $flights->update([
             'date' => $request->date,
-            'departure' => $request->departure,
+            'origin' => $request->origin,
             'arrival' => $request->arrival,
-            'plane_id' => $request->plane_id,
+            'status' => $request->status,        
             'reserved' => $request->reserved,
-            'aviable' => $flights->aviable
+            'plane_id' => $request->plane_id
         ]);
 
         $flights->save();
@@ -146,7 +146,7 @@ class FlightController extends Controller
 
     public function book(Flight $flight, int $userId)
     {
-        if ($flight->reserved == $flight->plane->max_capacity)
+        if ($flight->reserved == $flight->plane->seats)
         {
             return;
         }
@@ -156,11 +156,11 @@ class FlightController extends Controller
                 "reserved" => $flight->reserved + 1
             ]
         );
-        if ($flight->reserved == $flight->plane->max_capacity && !$flight->aviable)
+        if ($flight->reserved == $flight->plane->seats && !$flight->status)
         {
             $flight->update(
                 [
-                    "aviable" => 1
+                    "status" => 1
                 ]
             );
         }
@@ -178,9 +178,9 @@ class FlightController extends Controller
             "reserved" => $flight->reserved - 1
         ]);
 
-        if ($flight->aviable) {
+        if ($flight->status) {
             $flight->update([
-                "aviable" => 1
+                "status" => 1
             ]);
         }
     }

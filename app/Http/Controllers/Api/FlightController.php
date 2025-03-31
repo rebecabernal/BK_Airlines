@@ -19,11 +19,11 @@ class FlightController extends Controller
     {
         $flight = Flight::create([
             'date' => $request->date,
-            'departure' => $request->departure,
+            'origin' => $request->origin,
             'arrival' => $request->arrival,
-            'plane_id' => $request->plane_id,
+            'status' => $request->status,        
             'reserved' => $request->reserved,
-            'aviable' => $request->aviable
+            'plane_id' => $request->plane_id
         ]);
 
         $flight->save();
@@ -43,11 +43,11 @@ class FlightController extends Controller
 
         $flight->update([
             'date' => $request->date,
-            'departure' => $request->departure,
+            'origin' => $request->origin,
             'arrival' => $request->arrival,
-            'plane_id' => $request->plane_id,
+            'status' => $request->status,        
             'reserved' => $request->reserved,
-            'aviable' => $request->aviable
+            'plane_id' => $request->plane_id
         ]);
         
         $flight->save();

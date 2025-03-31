@@ -161,7 +161,7 @@ class AuthControllerTest extends TestCase
         $response = $this->withHeaders(["Authentication" => "Bearer ".$token])->post(route("logout"));
 
         $response->assertStatus(302);
-        $this->assertFalse(auth()->check());
+        $this->assertFalse(Auth::check());
     }
 
     public function test_if_api_user_can_logout_successfully(): void

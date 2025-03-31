@@ -42,7 +42,7 @@ class PlaneController extends Controller
     {
         $plane = Plane::create([
             'name' => $request->name,
-            'max_capacity' => $request->max_capacity,
+            'seats' => $request->seats,
         ]);
         $plane->save();
 
@@ -80,7 +80,7 @@ class PlaneController extends Controller
 
         $plane->update([
             'name' => $request->name,
-            'max_capacity' => $request->max_capacity,
+            'seats' => $request->seats,
         ]);
 
         $plane->save();
