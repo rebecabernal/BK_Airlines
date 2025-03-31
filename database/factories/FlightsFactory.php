@@ -20,9 +20,9 @@ class FlightsFactory extends Factory
             "date" => $this->faker->date(),
             "origin" => $this->faker->country(),
             "arrival" => $this->faker->country(),
-            "image" => $this->faker->imageUrl(),
+            "reserved" => $this->faker->boolean(),
             "status" => $this->faker->boolean(),
-            "airplane_id" => $this->faker->randomDigitNot(0)
+            "plane_id" => $this->faker->randomDigitNot(0)
 
         ];
     }

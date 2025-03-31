@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Planes extends Model
+class Plane extends Model
 {
     protected $fillable = [
         "name",
@@ -14,7 +14,7 @@ class Planes extends Model
 
     public function flights(): HasMany
     {
-        return $this->hasMany(Flights::class);
+        return $this->hasMany(Flight::class);
     }
 }
 
