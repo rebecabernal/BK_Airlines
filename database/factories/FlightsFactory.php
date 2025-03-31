@@ -22,7 +22,7 @@ class FlightsFactory extends Factory
             "arrival" => $this->faker->country(),
             "reserved" => $this->faker->boolean(),
             "status" => $this->faker->boolean(),
-            "airplane_id" => $this->faker->randomDigitNot(0)
+            "plane_id" => $this->faker->randomDigitNot(0)
 
         ];
     }
