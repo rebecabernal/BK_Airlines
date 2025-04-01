@@ -54,52 +54,52 @@ class DatabaseSeeder extends Seeder
         //Planes seed
         Plane::create([
             'name' => 'Boeing 737',
-            'max_capacity' => 150,
+            'seats' => 150,
         ]);
 
         Plane::create([
             'name' => 'Airbus A320',
-            'max_capacity' => 160,
+            'seats' => 160,
         ]);
 
         Plane::create([
             'name' => 'Embraer E190',
-            'max_capacity' => 110,
+            'seats' => 110,
         ]);
 
         Plane::create([
             'name' => 'Bombardier CRJ900',
-            'max_capacity' => 120,
+            'seats' => 120,
         ]);
 
         Plane::create([
             'name' => 'Boeing 777',
-            'max_capacity' => 180,
+            'seats' => 180,
         ]);
 
         Plane::create([
             'name' => 'Airbus A350',
-            'max_capacity' => 170,
+            'seats' => 170,
         ]);
 
         Plane::create([
             'name' => 'Boeing 787 Dreamliner',
-            'max_capacity' => 160,
+            'seats' => 160,
         ]);
 
         Plane::create([
             'name' => 'Airbus A330',
-            'max_capacity' => 150,
+            'seats' => 150,
         ]);
 
         Plane::create([
             'name' => 'Embraer E175',
-            'max_capacity' => 130,
+            'seats' => 130,
         ]);
 
         Plane::create([
             'name' => 'Bombardier Q400',
-            'max_capacity' => 140,
+            'seats' => 140,
         ]);
 
         //Flights seed

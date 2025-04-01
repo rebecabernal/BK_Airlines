@@ -7,6 +7,6 @@
         @endif
         <a href="{{ route('flights') }}" class="btn btn-primary">New Flights</a>
     </div>
-    <p>&copy; 2025 Pepe's Airlines</p>
-    <a href="https://github.com/sr-calcetines" target="_blank">GitHub</a>
+    <p>&copy; 2025 BK Airlines</p>
+    <a href="https://github.com/rebecabernal" target="_blank">GitHub</a>
 </footer>

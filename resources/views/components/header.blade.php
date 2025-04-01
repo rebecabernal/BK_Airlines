@@ -10,7 +10,7 @@
             
 
             <div class="nav-title">
-                <h1>Pepe's Airline</h1>
+                <h1>BK Airlines</h1>
                 <div class="navAdmin">
                     <a href="{{route('pastFlights') }}" class="btn btn-primary">Past Flights</a>
                     @if(Auth::check() && Auth::user()->isAdmin)

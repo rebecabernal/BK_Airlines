@@ -22,11 +22,11 @@ Route::group([
 });
 
 //Flights routes
-Route::get('/flights',[FlightController::class,'index'])->name('apiflightall');
 Route::get('/flights/show/{id}',[FlightController::class, 'show'])->name('apiflightshow');
 Route::delete('/flights/destroy/{id}',[FlightController::class, 'destroy'])->middleware('role:admin', 'auth:api')->name('apiflightdestroy');
 Route::post('/flights/store',[FlightController::class, 'store'])->middleware('role:admin', 'auth:api')->name('apiflightstore');
 Route::put('/flights/update/{id}',[FlightController::class, 'update'])->middleware('role:admin', 'auth:api')->name('apiflightupdate');
+Route::get('/flights',[FlightController::class,'index'])->name('apiflightall');
 
 //Planes routes
 Route::get('/planes',[PlaneController::class,'index'])->name('apiplaneall');

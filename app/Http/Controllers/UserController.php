@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         $userFlights = Auth::user()->flights()->where('date', '>=', now())->orderBy('date', 'desc')->get();
 
-        $userPastFlights = Auth::user()->lights()->where('date', '<', now())->orderBy('date', 'desc')->get();
+        $userPastFlights = Auth::user()->flights()->where('date', '<', now())->orderBy('date', 'desc')->get();
 
         return view('flights.myFlights', compact('userFlights', 'userPastFlights'));
     }

@@ -41,7 +41,7 @@ class PlaneControllerTest extends TestCase
 
         $data = [
             'name' => 'Airbus A320',
-            'max_capacity' => 180
+            'seats' => 180
         ];
 
         $response = $this->actingAs($admin, 'api')
@@ -60,7 +60,7 @@ class PlaneControllerTest extends TestCase
 
         $data = [
             'name' => 'Boeing 777',
-            'max_capacity' => 300
+            'seats' => 300
         ];
 
         $response = $this->actingAs($admin, 'api')
@@ -69,7 +69,7 @@ class PlaneControllerTest extends TestCase
         $response->assertOk()
                  ->assertJsonFragment(['name' => 'Boeing 777']);
 
-        $this->assertDatabaseHas('planes', ['max_capacity' => 300]);
+        $this->assertDatabaseHas('planes', ['seats' => 300]);
     }
 
     public function test_if_admin_can_delete_plane()
@@ -91,7 +91,7 @@ class PlaneControllerTest extends TestCase
 
         $data = [
             'name' => 'Embraer 190',
-            'max_capacity' => 100
+            'seats' => 100
         ];
 
         $response = $this->actingAs($user, 'api')

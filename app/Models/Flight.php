@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Flight extends Model
 {
+    use HasFactory;
     protected $fillable = [
         "date",
         "origin",
@@ -18,7 +20,7 @@ class Flight extends Model
     ];
 
 
-    public function planes(): BelongsTo
+    public function plane(): BelongsTo
     {
         return $this->belongsTo(Plane::class);
     }

@@ -34,7 +34,7 @@ class FlightControllerTest extends TestCase
         $response->assertOk()
             ->assertJsonFragment([
                 'id' => $flight->id,
-                'departure' => $flight->departure,
+                'origin' => $flight->origin,
             ]);
     }
 
@@ -44,19 +44,19 @@ class FlightControllerTest extends TestCase
         $plane = Plane::factory()->create();
 
         $data = [
-            'date' => now()->addDays(3),
-            'departure' => 'Sevilla',
+            'date' => '2030-04-28',
+            'origin' => 'Sevilla',
             'arrival' => 'Valencia',
             'plane_id' => $plane->id,
             'reserved' => 0,
-            'aviable' => 1,
+            'status' => 1,
         ];
 
         $response = $this->actingAs($admin, 'api')
             ->postJson(route('apiflightstore'), $data);
 
         $response->assertOk()
-            ->assertJsonFragment(['departure' => 'Sevilla']);
+            ->assertJsonFragment(['origin' => 'Sevilla']);
 
         $this->assertDatabaseHas('flights', ['arrival' => 'Valencia']);
     }
@@ -68,12 +68,12 @@ class FlightControllerTest extends TestCase
         $flight = Flight::factory()->create(['plane_id' => $plane->id]);
 
         $data = [
-            'date' => now()->addDays(5),
-            'departure' => 'Bilbao',
+            'date' => '2030-04-28',
+            'origin' => 'Bilbao',
             'arrival' => 'Roma',
             'plane_id' => $plane->id,
             'reserved' => 5,
-            'aviable' => 1,
+            'status' => 1,
         ];
 
         $response = $this->actingAs($admin, 'api')
@@ -82,7 +82,7 @@ class FlightControllerTest extends TestCase
         $response->assertOk()
             ->assertJsonFragment(['arrival' => 'Roma']);
 
-        $this->assertDatabaseHas('flights', ['departure' => 'Bilbao']);
+        $this->assertDatabaseHas('flights', ['origin' => 'Bilbao']);
     }
 
     public function test_if_admin_can_delete_a_flight()
@@ -105,12 +105,12 @@ class FlightControllerTest extends TestCase
         $plane = Plane::factory()->create();
 
         $data = [
-            'date' => now()->addDays(3),
-            'departure' => 'Zaragoza',
+            'date' => '2030-04-28',
+            'origin' => 'Zaragoza',
             'arrival' => 'Granada',
             'plane_id' => $plane->id,
             'reserved' => 0,
-            'aviable' => 1,
+            'status' => 1,
         ];
 
         $response = $this->actingAs($user, 'api')
