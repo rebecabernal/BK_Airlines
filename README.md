@@ -45,15 +45,14 @@ This is the table for **Planes**. It should:
 ***
 ### Project Diagrams (BBDD)
 
-![BBDD Diagram]()
-
+![BBDD Diagram](https://github.com/user-attachments/assets/30dbf302-6580-49d3-b69f-4d340caca3bb)
 
 ***
 ## :scroll: Installation
 
 1.) **Clone** this repository:
 ```
-https://github.com/sr-calcetines/Airline-Project.git
+https://github.com/rebecabernal/BK_Airlines.git
 ```
 
 ***
